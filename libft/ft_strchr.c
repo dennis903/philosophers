@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   strchr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@42student.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 16:38:39 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/11 18:02:15 by hyeolee          ###   ########.fr       */
+/*   Created: 2020/10/08 20:04:24 by hyeolee           #+#    #+#             */
+/*   Updated: 2020/10/08 20:20:02 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/philosophers.h"
+#include "libft.h"
 
-int				main(int argc, char *argv[])
+char		*ft_strchr(const char *s, int c)
 {
-	if (!error_in_options(argc, argv))
+	while (*s)
 	{
-		
+		if (*s == c)
+			return ((char *)s);
+		s++;
 	}
-	else
-		printf("error in options\n");
-	return (0);
+	if (*s == c)
+		return ((char *)s);
+	return (NULL);
 }

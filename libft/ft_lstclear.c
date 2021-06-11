@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@42student.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 16:38:39 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/11 18:02:15 by hyeolee          ###   ########.fr       */
+/*   Created: 2020/10/14 14:08:29 by hyeolee           #+#    #+#             */
+/*   Updated: 2020/10/14 14:30:33 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/philosophers.h"
+#include "libft.h"
 
-int				main(int argc, char *argv[])
+void		ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (!error_in_options(argc, argv))
+	t_list	*node;
+
+	if (!lst)
+		return ;
+	while (*lst)
 	{
-		
+		node = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = node;
 	}
-	else
-		printf("error in options\n");
-	return (0);
 }

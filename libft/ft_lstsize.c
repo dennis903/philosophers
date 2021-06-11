@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@42student.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 16:38:39 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/11 18:02:15 by hyeolee          ###   ########.fr       */
+/*   Created: 2020/10/13 21:45:22 by hyeolee           #+#    #+#             */
+/*   Updated: 2020/10/13 22:24:51 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/philosophers.h"
+#include "libft.h"
 
-int				main(int argc, char *argv[])
+int		ft_lstsize(t_list *lst)
 {
-	if (!error_in_options(argc, argv))
+	int	count;
+
+	count = 0;
+	while (lst)
 	{
-		
+		lst = lst->next;
+		count++;
 	}
-	else
-		printf("error in options\n");
-	return (0);
+	return (count);
 }

@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   memset.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 16:38:39 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/11 18:02:15 by hyeolee          ###   ########.fr       */
+/*   Created: 2020/09/30 12:33:00 by hyeolee           #+#    #+#             */
+/*   Updated: 2020/10/08 15:03:33 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/philosophers.h"
+#include "libft.h"
 
-int				main(int argc, char *argv[])
+void		*ft_memset(void *b, int c, size_t len)
 {
-	if (!error_in_options(argc, argv))
+	char	*temp;
+
+	if (!b)
 	{
-		
+		temp = (char *)b;
+		temp[0] = 0;
+		return ((void *)temp);
 	}
-	else
-		printf("error in options\n");
-	return (0);
+	temp = (char *)b;
+	while (len--)
+	{
+		*temp = c;
+		temp++;
+	}
+	return (b);
 }

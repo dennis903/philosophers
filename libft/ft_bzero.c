@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   bzero.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 16:38:39 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/11 18:02:15 by hyeolee          ###   ########.fr       */
+/*   Created: 2020/09/30 12:43:45 by hyeolee           #+#    #+#             */
+/*   Updated: 2020/10/08 16:15:13 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/philosophers.h"
+#include "libft.h"
 
-int				main(int argc, char *argv[])
+void		ft_bzero(void *s, size_t n)
 {
-	if (!error_in_options(argc, argv))
+	size_t	i;
+
+	if (n != 0)
 	{
-		
+		i = 0;
+		while (i < n)
+		{
+			((char *)s)[i] = 0;
+			i++;
+		}
 	}
-	else
-		printf("error in options\n");
-	return (0);
 }

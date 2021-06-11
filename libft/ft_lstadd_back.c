@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@42student.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 16:38:39 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/11 18:02:15 by hyeolee          ###   ########.fr       */
+/*   Created: 2020/10/13 22:34:07 by hyeolee           #+#    #+#             */
+/*   Updated: 2020/10/14 13:44:35 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/philosophers.h"
+#include "libft.h"
 
-int				main(int argc, char *argv[])
+void		ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (!error_in_options(argc, argv))
+	t_list	*node;
+
+	if (lst == NULL)
+		return ;
+	if ((*lst) && new)
 	{
-		
+		node = *lst;
+		while (node->next)
+			node = node->next;
+		node->next = new;
 	}
 	else
-		printf("error in options\n");
-	return (0);
+		*lst = new;
 }
