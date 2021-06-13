@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 16:38:39 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/13 21:11:31 by hyeolee          ###   ########.fr       */
+/*   Created: 2021/06/13 20:09:06 by hyeolee           #+#    #+#             */
+/*   Updated: 2021/06/13 20:10:32 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/philosophers.h"
+#include "../include/philosophers.h"
+#define LLONG_MAX 9223372036854775807
 
-int				main(int argc, char *argv[])
+size_t		ft_strlen(const char *s)
 {
-	t_option	options;
-	if (error_in_options(argc, argv))
-	{
-		if (!init_options(&options, argc, argv))
-		{
-			printf("error in options\n");
-			return (0);
-		}
-		start_philo(&options);
-	}
-	else
-		printf("error in options\n");
-	return (0);
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

@@ -6,23 +6,36 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:08:36 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/13 18:26:29 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/13 22:30:21 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-void			init_philos(t_philo **philo)
+int				mutex_init(t_option *option)
 {
 	int			i;
-	t_option	tmp;
 
 	i = 0;
-	tmp = (*philo)->option;
-	while (i < tmp.num_of_philos)
+	while (i < option->num_of_philos)
 	{
-		(*philo)->status = THINKING;
-		(*philo)->philo_id = i;
+		if (pthread_mutex_init(&(option->fork[i]), NULL))
+			return (FAILED);
+		i++;
+	}
+	return (SUCCESS);
+}
+
+void			init_philos(t_philo *philo, t_option *option)
+{
+	int			i;
+
+	i = 0;
+	while (i < option->num_of_philos)
+	{
+		philo[i].status = THINKING;
+		philo[i].philo_id = i;
+		philo[i].option = option;
 		i++;
 	}
 }
@@ -37,9 +50,11 @@ int				init_options(t_option *option, int argc, char **argv)
 		option->num_of_philos_eat = ft_atoi(argv[5]);
 	else
 		option->num_of_philos_eat = -1;
+	option->first_time = timestamp();
 	if (!check_valid_arg(argc, option))
 		return (FAILED);
-	option->philos->option = option;
-	init_philos(&(option->philos));
+	if (!mutex_init(option))
+		return (FAILED);
+	init_philos(option->philos, option);
 	return (SUCCESS);
 }

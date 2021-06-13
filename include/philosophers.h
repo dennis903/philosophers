@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 16:38:43 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/13 18:31:43 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/13 22:34:05 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,15 @@
 #include <sys/time.h> //for gettimeofday
 #include <pthread.h>
 
-typedef struct		s_option;
+struct s_option;
 
 typedef	struct		s_philo
 {
 	int				status;
 	int				philo_id;
-	struct s_option	option;
-	pthread_mutex_t	eat_check;
+	long long		latest_time;
+	pthread_t		tid;
+	struct s_option	*option;
 }					t_philo;
 
 typedef struct		s_option
@@ -44,14 +45,18 @@ typedef struct		s_option
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				num_of_philos_eat;
-	pthread_t		tid[200];
+	long long		first_time;
 	pthread_mutex_t	fork[200];
-	t_philo			philos[200];
+	struct s_philo	philos[200];
 }					t_option;
+
 
 int					error_in_options(int argc, char **argv);
 int					init_options(t_option *option, int argc, char **argv);
 int					check_valid_arg(int argc, t_option *option);
 void				start_philo(t_option *option);
-void				*act_philo(t_philo *philo);
+void				*act_philo(void *param);
+long long			timestamp(void);
+size_t				ft_strlen(const char *s);
+long long			ft_atoi(const char *str);
 #endif

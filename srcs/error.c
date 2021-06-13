@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 16:44:23 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/11 18:08:57 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/13 20:22:07 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int		is_in_int_max(char *str)
 
 static int		check_error_in_number(char *str)
 {
-	if (!is_valid_num(str))
+	if (!is_valid_number(str))
 		return (FAILED);
 	if (!is_in_int_max(str))
 		return (FAILED);
@@ -74,6 +74,6 @@ int				error_in_options(int argc, char **argv)
 		return (FAILED);
 	if (argc == 6)
 		if (!check_error_in_number(argv[5]))
-		return (FAILED);
+			return (FAILED);
 	return (SUCCESS);
 }

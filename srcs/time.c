@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 16:38:39 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/13 21:11:31 by hyeolee          ###   ########.fr       */
+/*   Created: 2021/06/13 19:51:58 by hyeolee           #+#    #+#             */
+/*   Updated: 2021/06/13 20:26:05 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/philosophers.h"
+#include "../include/philosophers.h"
 
-int				main(int argc, char *argv[])
+long long			timestamp(void)
 {
-	t_option	options;
-	if (error_in_options(argc, argv))
-	{
-		if (!init_options(&options, argc, argv))
-		{
-			printf("error in options\n");
-			return (0);
-		}
-		start_philo(&options);
-	}
-	else
-		printf("error in options\n");
-	return (0);
+	struct timeval	mytime;
+
+	gettimeofday(&mytime, NULL);
+	return (mytime.tv_usec);
 }
