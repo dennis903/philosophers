@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 16:09:15 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/05/18 16:09:19 by hyeolee          ###   ########.fr       */
+/*   Created: 2021/06/13 16:03:41 by hyeolee           #+#    #+#             */
+/*   Updated: 2021/06/13 18:26:45 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/philosophers.h"
 
-int				ft_strcmp(char *s1, char *s2)
+void		start_philo(t_option *option)
 {
-	int				i;
-	unsigned char	s1_letter;
-	unsigned char	s2_letter;
+	int		i;
+	t_philo	*philo;
 
 	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+	philo = option->philos;
+	while (i < option->num_of_philos)
 	{
+		pthread_create(&option->tid[i], NULL, act_philo, philo);
 		i++;
 	}
-	s1_letter = (unsigned char)s1[i];
-	s2_letter = (unsigned char)s2[i];
-	return (s1_letter - s2_letter);
+	i = 0;
+	while (i < option->num_of_philos)
+	{
+		pthread_join(option->tid[i], NULL);
+		i++;
+	}
 }

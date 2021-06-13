@@ -6,11 +6,11 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 16:44:23 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/11 18:02:11 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/11 18:08:57 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/philosophers.h"
+#include "../include/philosophers.h"
 
 static int		check_num(char *str)
 {

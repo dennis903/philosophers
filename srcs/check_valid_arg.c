@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_valid_arg.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 16:38:39 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/13 16:03:33 by hyeolee          ###   ########.fr       */
+/*   Created: 2021/06/13 15:53:32 by hyeolee           #+#    #+#             */
+/*   Updated: 2021/06/13 15:57:40 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/philosophers.h"
+#include "../include/philosophers.h"
 
-int				main(int argc, char *argv[])
+int			check_valid_arg(int argc, t_option *option)
 {
-	t_option	options;
-
-	if (!error_in_options(argc, argv))
-	{
-		if (!init_options(&options, argc, argv))
-		{
-			printf("error in options\n");
-			return (0);
-		}
-		start_philo(&options);
-	}
-	else
-		printf("error in options\n");
-	return (0);
+	if (option->num_of_philos < 2)
+		return(FAILED);
+	if (option->time_to_die <= 0)
+		return (FAILED);
+	if (option->time_to_eat <= 0)
+		return (FAILED);
+	if (option->time_to_sleep <= 0)
+		return (FAILED);
+	if (argc == 6)
+		if (option->num_of_philos_eat <= 0)
+			return (FAILED);
+	return (SUCCESS);
 }

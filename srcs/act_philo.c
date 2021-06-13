@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   act_philo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeolee <hyeolee@42student.kr>             +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/14 14:32:15 by hyeolee           #+#    #+#             */
-/*   Updated: 2020/10/14 14:43:37 by hyeolee          ###   ########.fr       */
+/*   Created: 2021/06/13 16:36:35 by hyeolee           #+#    #+#             */
+/*   Updated: 2021/06/13 18:28:15 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/philosophers.h"
 
-void		ft_lstiter(t_list *lst, void (*f)(void *))
+void			*act_philo(t_philo *philo)
 {
-	if (!lst)
-		return ;
-	while (lst)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	death_check(philo);
+	//todo : eating
+	death_check(philo);
+	//todo : sleeping
+	death_check(philo);
+	//todo : thinking
+	death_check(philo);
 }

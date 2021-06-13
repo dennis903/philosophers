@@ -1,32 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memset.c                                           :+:      :+:    :+:   */
+/*   death.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeolee <hyeolee@42seoul.kr>               +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 12:33:00 by hyeolee           #+#    #+#             */
-/*   Updated: 2020/10/08 15:03:33 by hyeolee          ###   ########.fr       */
+/*   Created: 2021/06/13 18:30:09 by hyeolee           #+#    #+#             */
+/*   Updated: 2021/06/13 18:30:27 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/philosophers.h"
 
-void		*ft_memset(void *b, int c, size_t len)
-{
-	char	*temp;
-
-	if (!b)
-	{
-		temp = (char *)b;
-		temp[0] = 0;
-		return ((void *)temp);
-	}
-	temp = (char *)b;
-	while (len--)
-	{
-		*temp = c;
-		temp++;
-	}
-	return (b);
-}
