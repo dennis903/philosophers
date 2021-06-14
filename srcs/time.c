@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 19:51:58 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/13 20:26:05 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/14 22:30:05 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 long long			timestamp(void)
 {
-	struct timeval	mytime;
+	struct timeval	start;
+	struct timeval	end;
 
-	gettimeofday(&mytime, NULL);
-	return (mytime.tv_usec);
+	
 }
