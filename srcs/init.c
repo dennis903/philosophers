@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:08:36 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/14 20:23:17 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/15 18:55:48 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void			init_philos(t_philo *philo, t_option *option)
 	while (i < option->num)
 	{
 		philo[i].status = THINKING;
-		philo[i].philo_id = i;
+		philo[i].philo_id = i + 1;
 		philo[i].option = option;
 		philo[i].left_of = (i + (philo_num - 1)) % philo_num;
-		philo[i].right_of = (i + 1) % philo_num;
+		philo[i].right_of = i % philo_num;
 		philo[i].must_eat = option->must_eat;
 		i++;
 	}
@@ -58,7 +58,7 @@ int				init_options(t_option *option, int argc, char **argv)
 	else
 		option->must_eat = -1;
 	option->dead_id = -1;
-	option->latest_time = timestamp();
+	option->first_time = timestamp();
 	if (!check_valid_arg(argc, option))
 		return (FAILED);
 	if (!mutex_init(option))

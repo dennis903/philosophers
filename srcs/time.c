@@ -6,16 +6,34 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 19:51:58 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/14 22:30:05 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/15 20:36:12 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
+void				ft_usleep(long long save, long long time)
+{
+	long long		wait;
+
+	while (timestamp() < save + time)
+	{
+		wait = (save + time - timestamp()) / 2;
+		usleep (wait * 1000);
+	}
+}
+
+long long			timediff(long long present, long long first)
+{
+	return (present - first);
+}
+
 long long			timestamp(void)
 {
-	struct timeval	start;
-	struct timeval	end;
+	struct timeval	time;
+	long long		present;
 
-	
+	gettimeofday(&time, NULL);
+	present = (time.tv_sec * 1000) + (time.tv_usec / 1000);
+	return (present);
 }

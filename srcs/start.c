@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 16:03:41 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/14 22:26:46 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/15 18:56:00 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,23 @@ void		start_philo(t_option *option)
 
 	i = 0;
 	philo = option->philos;
-	option->latest_time = timestamp();
 	// while (i < option->num)
 	// {
-	// 	pthread_create(&philo[i].tid, NULL, act_philo, (void *)&philo[i]);
+	// 	printf("%d : %d\n", philo[i].philo_id, philo[i].left_of);
+	// 	printf("%d : %d\n", philo[i].philo_id, philo[i].right_of);
 	// 	i++;
 	// }
-	// i = 0;
-	// while (i < option->num)
-	// {
-	// 	pthread_join(philo[i].tid, NULL);
-	// 	i++;
-	// }
-	//monitor();
-	//exit_philo();
+	while (i < option->num)
+	{
+		pthread_create(&philo[i].tid, NULL, act_philo, (void *)&philo[i]);
+		i++;
+	}
+	i = 0;
+	while (i < option->num)
+	{
+		pthread_join(philo[i].tid, NULL);
+		i++;
+	}
+	// monitor();
+	// exit_philo();
 }

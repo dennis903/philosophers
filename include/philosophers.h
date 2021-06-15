@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 16:38:43 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/14 22:27:00 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/15 20:36:22 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,6 @@ long long			timestamp(void);
 size_t				ft_strlen(const char *s);
 long long			ft_atoi(const char *str);
 void				dead_check(t_option *option, t_philo *philo);
+long long			timediff(long long present, long long first);
+void				ft_usleep(long long save, long long time);
 #endif
