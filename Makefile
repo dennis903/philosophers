@@ -9,7 +9,9 @@ OBJS =	./main.c	\
 		./srcs/act_philo.c	\
 		./srcs/time.c	\
 		./srcs/ft_atoi.c	\
-		./srcs/ft_strlen.c
+		./srcs/ft_strlen.c	\
+		./srcs/pickup.c	\
+		./srcs/death.c
 
 all : $(TARGET)
 

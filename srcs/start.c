@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 16:03:41 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/15 18:56:00 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/15 22:09:26 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ void		start_philo(t_option *option)
 
 	i = 0;
 	philo = option->philos;
-	// while (i < option->num)
-	// {
-	// 	printf("%d : %d\n", philo[i].philo_id, philo[i].left_of);
-	// 	printf("%d : %d\n", philo[i].philo_id, philo[i].right_of);
-	// 	i++;
-	// }
 	while (i < option->num)
 	{
 		pthread_create(&philo[i].tid, NULL, act_philo, (void *)&philo[i]);

@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:08:36 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/15 18:55:48 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/15 22:01:52 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int				mutex_init(t_option *option)
 			return (FAILED);
 		i++;
 	}
-	if (pthread_mutex_init(&(option->monitor), NULL))
+	if (pthread_mutex_init(&(option->mutex), NULL))
 		return (FAILED);
 	return (SUCCESS);
 }
@@ -43,6 +43,7 @@ void			init_philos(t_philo *philo, t_option *option)
 		philo[i].left_of = (i + (philo_num - 1)) % philo_num;
 		philo[i].right_of = i % philo_num;
 		philo[i].must_eat = option->must_eat;
+		philo[i].latest_eat_time = 0;
 		i++;
 	}
 }
@@ -57,7 +58,7 @@ int				init_options(t_option *option, int argc, char **argv)
 		option->must_eat = ft_atoi(argv[5]);
 	else
 		option->must_eat = -1;
-	option->dead_id = -1;
+	option->dead = 0;
 	option->first_time = timestamp();
 	if (!check_valid_arg(argc, option))
 		return (FAILED);

@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   death.c                                            :+:      :+:    :+:   */
+/*   pickup.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/13 18:30:09 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/15 22:17:32 by hyeolee          ###   ########.fr       */
+/*   Created: 2021/06/15 21:20:34 by hyeolee           #+#    #+#             */
+/*   Updated: 2021/06/15 22:24:37 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-int				death_check(t_option *option, t_philo **philo)
+int				pickup(t_option *option, t_philo **philo)
 {
-	long long	present;
-
-	pthread_mutex_lock(&option->mutex);
-	present = option->latest_time - option->first_time;
-	present -= (*philo)->latest_eat_time;
-	if (present > option->time_to_die)
-	{
-		print_status(option, (*philo)->philo_id, "died");
-		option->dead = 1;
-		return (1);
-	}
-	pthread_mutex_unlock(&option->mutex);
-	return (0);
+	// pthread_mutex_lock(&option->fork[(*philo)->left_of]);
+	// option->latest_time = timestamp();
+	// print_status(option, (*philo)->philo_id, "has taken a left fork");
+	// pthread_mutex_lock(&option->fork[(*philo)->right_of]);
+	// option->latest_time = timestamp();
+	// print_status(option, (*philo)->philo_id, "has taken a right fork");
+	return (1);
 }

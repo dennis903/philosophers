@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 16:38:43 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/15 20:36:22 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/15 22:01:48 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef	struct		s_philo
 	int				left_of;
 	int				right_of;
 	int				must_eat;
+	int				latest_eat_time;
 	long long		latest_time;
 	pthread_t		tid;
 	struct s_option	*option;
@@ -48,10 +49,10 @@ typedef struct		s_option
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				must_eat;
-	int				dead_id;
+	int				dead;
 	long long		latest_time;
 	long long		first_time;
-	pthread_mutex_t	monitor;
+	pthread_mutex_t	mutex;
 	pthread_mutex_t	fork[200];
 	struct s_philo	philos[200];
 }					t_option;
@@ -65,7 +66,9 @@ void				*act_philo(void *param);
 long long			timestamp(void);
 size_t				ft_strlen(const char *s);
 long long			ft_atoi(const char *str);
-void				dead_check(t_option *option, t_philo *philo);
+int					death_check(t_option *option, t_philo **philo);
 long long			timediff(long long present, long long first);
 void				ft_usleep(long long save, long long time);
+int					pickup(t_option *option, t_philo **philo);
+void				print_status(t_option *option, int pid, const char *status);
 #endif
