@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 16:38:43 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/15 22:01:48 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/16 21:44:38 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef	struct		s_philo
 	int				philo_id;
 	int				left_of;
 	int				right_of;
-	int				must_eat;
 	int				latest_eat_time;
+	int				eat_count;
 	long long		latest_time;
 	pthread_t		tid;
 	struct s_option	*option;
@@ -53,6 +53,7 @@ typedef struct		s_option
 	long long		latest_time;
 	long long		first_time;
 	pthread_mutex_t	mutex;
+	pthread_mutex_t	death;
 	pthread_mutex_t	fork[200];
 	struct s_philo	philos[200];
 }					t_option;

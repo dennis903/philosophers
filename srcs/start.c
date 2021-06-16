@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 16:03:41 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/15 22:09:26 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/16 20:33:37 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@ void		start_philo(t_option *option)
 		pthread_create(&philo[i].tid, NULL, act_philo, (void *)&philo[i]);
 		i++;
 	}
-	i = 0;
-	while (i < option->num)
-	{
-		pthread_join(philo[i].tid, NULL);
-		i++;
-	}
-	// monitor();
-	// exit_philo();
+	pthread_mutex_lock(&option->death);
+	pthread_mutex_lock(&option->death);
 }
