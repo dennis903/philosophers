@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 16:38:43 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/16 21:44:38 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/16 21:59:17 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct		s_option
 	long long		latest_time;
 	long long		first_time;
 	pthread_mutex_t	mutex;
+	pthread_mutex_t print_mutex;
 	pthread_mutex_t	death;
 	pthread_mutex_t	fork[200];
 	struct s_philo	philos[200];
@@ -67,7 +68,7 @@ void				*act_philo(void *param);
 long long			timestamp(void);
 size_t				ft_strlen(const char *s);
 long long			ft_atoi(const char *str);
-int					death_check(t_option *option, t_philo **philo);
+void				death_check(t_option *option, t_philo **philo);
 long long			timediff(long long present, long long first);
 void				ft_usleep(long long save, long long time);
 int					pickup(t_option *option, t_philo **philo);

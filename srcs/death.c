@@ -6,13 +6,13 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 18:30:09 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/16 21:45:17 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/16 21:56:52 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-int				death_check(t_option *option, t_philo **philo)
+void				death_check(t_option *option, t_philo **philo)
 {
 	long long	present;
 
