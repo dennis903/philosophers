@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 16:44:23 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/13 20:22:07 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/17 22:46:44 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static int		is_valid_number(char *str)
 		return (FAILED);
 	return (SUCCESS);
 }
-
 
 static int		is_in_int_max(char *str)
 {

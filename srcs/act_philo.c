@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 16:36:35 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/17 21:10:45 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/17 22:47:15 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			print_status(t_option *option, int pid, const char *status)
 
 	pthread_mutex_lock(&option->print_mutex);
 	present = timediff(timestamp(), option->first_time);
-	printf("%lld ms %d %s\n",present, pid, status);
+	printf("%lld ms %d %s\n", present, pid, status);
 	pthread_mutex_unlock(&option->print_mutex);
 }
 

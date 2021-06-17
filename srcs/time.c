@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 19:51:58 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/15 20:36:12 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/17 22:47:33 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void				ft_usleep(long long save, long long time)
 	while (timestamp() < save + time)
 	{
 		wait = (save + time - timestamp()) / 2;
-		usleep (wait * 1000);
+		usleep(wait * 1000);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 16:38:39 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/14 17:16:31 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/17 22:45:31 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int				main(int argc, char *argv[])
 {
 	t_option	options;
+
 	if (error_in_options(argc, argv))
 	{
 		if (!init_options(&options, argc, argv))

@@ -6,11 +6,11 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 16:38:43 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/17 22:22:22 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/17 22:50:35 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	PHILOSOPHERS_H
+#ifndef	PHILOSOPHERS_H //norm error here
 # define PHILOSOPHERS_H
 # define INT_MAX 2147483648
 # define INT_MIN -2147483647
@@ -20,12 +20,12 @@
 # define THINKING 2
 # define SLEEPING 3
 # define DEAD 4
-#include <string.h> //for memset
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/time.h> //for gettimeofday
-#include <pthread.h>
+# include <string.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <sys/time.h>
+# include <pthread.h>
 
 struct s_option;
 
@@ -59,7 +59,6 @@ typedef struct		s_option
 	pthread_mutex_t	fork[200];
 	struct s_philo	philos[200];
 }					t_option;
-
 
 void				monitor(t_option *option, t_philo *philo);
 int					error_in_options(int argc, char **argv);
