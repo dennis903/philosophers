@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 16:38:43 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/16 21:59:17 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/17 20:04:18 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ typedef	struct		s_philo
 	int				philo_id;
 	int				left_of;
 	int				right_of;
-	int				latest_eat_time;
+	long long		latest_eat_time;
 	int				eat_count;
+	int				all_ate;
 	long long		latest_time;
 	pthread_t		tid;
 	struct s_option	*option;
@@ -50,6 +51,7 @@ typedef struct		s_option
 	int				time_to_sleep;
 	int				must_eat;
 	int				dead;
+	int				all_ate;
 	long long		latest_time;
 	long long		first_time;
 	pthread_mutex_t	mutex;
@@ -60,6 +62,7 @@ typedef struct		s_option
 }					t_option;
 
 
+void				monitor(t_option *option, t_philo *philo);
 int					error_in_options(int argc, char **argv);
 int					init_options(t_option *option, int argc, char **argv);
 int					check_valid_arg(int argc, t_option *option);
@@ -68,7 +71,6 @@ void				*act_philo(void *param);
 long long			timestamp(void);
 size_t				ft_strlen(const char *s);
 long long			ft_atoi(const char *str);
-void				death_check(t_option *option, t_philo **philo);
 long long			timediff(long long present, long long first);
 void				ft_usleep(long long save, long long time);
 int					pickup(t_option *option, t_philo **philo);

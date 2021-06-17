@@ -6,23 +6,65 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 18:30:09 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/16 21:56:52 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/17 21:09:30 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-void				death_check(t_option *option, t_philo **philo)
+int				check_death(t_option *op, long long recent, t_philo philo)
 {
-	long long	present;
+	long long	eat_time;
 
-	pthread_mutex_lock(&option->mutex);
-	present = option->latest_time - option->first_time;
-	present -= (*philo)->latest_eat_time;
-	if (present > option->time_to_die)
+	eat_time = philo.latest_eat_time;
+	if (philo.all_ate == op->must_eat)
+		return (0);
+	if ((recent - eat_time) > op->time_to_die)
+		return (1);
+	else
+		return (0);
+}
+
+int				check_all_ate(t_option *option, t_philo *philo)
+{
+	int			i;
+
+	i = 0;
+	while (i < option->num)
 	{
-		print_status(option, (*philo)->philo_id, "died");
-		pthread_mutex_unlock(&option->death);
+		if (philo[i].all_ate != option->must_eat)
+			break ;
+		i++;
 	}
-	pthread_mutex_unlock(&option->mutex);
+	if (i == option->num)
+		return (1);
+	return (0);
+}
+
+void			monitor(t_option *option, t_philo *philo)
+{
+	int			i;
+
+	while (option->all_ate == 0)
+	{
+		i = 0;
+
+		while (i < option->num)
+		{
+			pthread_mutex_lock(&option->death);
+			if (check_death(option, timestamp(), philo[i]))
+			{
+				option->dead = 1;
+				option->latest_time = timestamp();
+				print_status(option, philo[i].philo_id, "died");
+			}
+			pthread_mutex_unlock(&option->death);
+			if (option->dead == 1)
+				break ;
+			i++;
+		}
+		if (option->dead == 1)
+			break ;
+		option->all_ate = check_all_ate(option, philo);
+	}
 }

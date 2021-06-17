@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 16:36:35 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/16 21:40:57 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/17 21:10:45 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ void			print_status(t_option *option, int pid, const char *status)
 {
 	long long	present;
 
+	pthread_mutex_lock(&option->print_mutex);
 	present = timediff(timestamp(), option->first_time);
 	printf("%lld ms %d %s\n",present, pid, status);
+	pthread_mutex_unlock(&option->print_mutex);
 }
 
 void			sleeping(t_philo **philo)
@@ -28,7 +30,6 @@ void			sleeping(t_philo **philo)
 	if ((*philo)->status == EATING)
 	{
 		(*philo)->status = SLEEPING;
-		death_check(option, philo);
 		print_status(option, (*philo)->philo_id, "is sleeping");
 		option->latest_time = timestamp();
 		ft_usleep(option->latest_time, option->time_to_sleep);
@@ -43,7 +44,6 @@ void			thinking(t_philo **philo)
 	if ((*philo)->status == SLEEPING)
 	{
 		(*philo)->status = THINKING;
-		death_check(option, philo);
 		print_status(option, (*philo)->philo_id, "is thinking");
 	}
 }
@@ -57,19 +57,16 @@ void			eating(t_philo **philo)
 	{
 		pthread_mutex_lock(&option->fork[(*philo)->left_of]);
 		option->latest_time = timestamp();
-		death_check(option, philo);
 		print_status(option, (*philo)->philo_id, "has taken a left fork");
 		pthread_mutex_lock(&option->fork[(*philo)->right_of]);
 		option->latest_time = timestamp();
-		death_check(option, philo);
 		print_status(option, (*philo)->philo_id, "has taken a right fork");
 		option->latest_time = timestamp();
 		(*philo)->status = EATING;
 		print_status(option, (*philo)->philo_id, "is eating");
 		(*philo)->eat_count++;
 		ft_usleep(option->latest_time, option->time_to_eat);
-		death_check(option, philo);
-		(*philo)->latest_eat_time = timediff(timestamp(), option->first_time);
+		(*philo)->latest_eat_time = timestamp();
 		pthread_mutex_unlock(&option->fork[(*philo)->left_of]);
 		pthread_mutex_unlock(&option->fork[(*philo)->right_of]);
 	}
@@ -90,5 +87,7 @@ void			*act_philo(void *param)
 		sleeping(&philo);
 		thinking(&philo);
 	}
+	if (philo->eat_count == option->must_eat)
+		philo->all_ate = 1;
 	return (NULL);
 }

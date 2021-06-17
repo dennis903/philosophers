@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:08:36 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/16 22:00:00 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/17 19:13:05 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void			init_philos(t_philo *philo, t_option *option)
 		philo[i].right_of = i % philo_num;
 		philo[i].latest_eat_time = 0;
 		philo[i].eat_count = 0;
+		philo[i].all_ate = 0;
+		philo[i].latest_eat_time = timestamp();
 		i++;
 	}
 }
@@ -63,7 +65,7 @@ int				init_options(t_option *option, int argc, char **argv)
 	else
 		option->must_eat = -1;
 	option->dead = 0;
-	option->first_time = timestamp();
+	option->all_ate = 0;
 	if (!check_valid_arg(argc, option))
 		return (FAILED);
 	if (!mutex_init(option))
