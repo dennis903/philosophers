@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:08:36 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/17 19:13:05 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/17 22:12:19 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int				mutex_init(t_option *option)
 			return (FAILED);
 		i++;
 	}
-	if (pthread_mutex_init(&(option->mutex), NULL))
-		return (FAILED);
 	if (pthread_mutex_init(&(option->death), NULL))
 		return (FAILED);
 	if (pthread_mutex_init(&(option->print_mutex), NULL))

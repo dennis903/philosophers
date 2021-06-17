@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 16:38:43 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/17 20:04:18 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/17 22:22:22 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ typedef struct		s_option
 	int				all_ate;
 	long long		latest_time;
 	long long		first_time;
-	pthread_mutex_t	mutex;
 	pthread_mutex_t print_mutex;
 	pthread_mutex_t	death;
 	pthread_mutex_t	fork[200];
@@ -73,6 +72,5 @@ size_t				ft_strlen(const char *s);
 long long			ft_atoi(const char *str);
 long long			timediff(long long present, long long first);
 void				ft_usleep(long long save, long long time);
-int					pickup(t_option *option, t_philo **philo);
 void				print_status(t_option *option, int pid, const char *status);
 #endif

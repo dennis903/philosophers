@@ -10,7 +10,6 @@ OBJS =	./main.c	\
 		./srcs/time.c	\
 		./srcs/ft_atoi.c	\
 		./srcs/ft_strlen.c	\
-		./srcs/pickup.c	\
 		./srcs/death.c
 
 all : $(TARGET)
