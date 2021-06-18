@@ -6,16 +6,22 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 16:03:41 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/17 22:45:06 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/18 20:42:14 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-void			destroy_mutex(t_option *option)
+void			destroy_mutex(t_option *option, t_philo *philo)
 {
 	int			i;
 
+	i = 0;
+	while (i < option->num)
+	{
+		pthread_join(philo[i].tid, NULL);
+		i++;
+	}
 	i = 0;
 	while (i < option->num)
 	{
@@ -37,9 +43,8 @@ void			start_philo(t_option *option)
 	while (i < option->num)
 	{
 		pthread_create(&philo[i].tid, NULL, act_philo, (void *)&philo[i]);
-		pthread_detach(philo[i].tid);
 		i++;
 	}
 	monitor(option, philo);
-	destroy_mutex(option);
+	destroy_mutex(option, philo);
 }

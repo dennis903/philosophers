@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 15:53:32 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/17 22:46:06 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/18 16:19:29 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			check_valid_arg(int argc, t_option *option)
 {
-	if (option->num < 1 || option->num >= 200)
+	if (option->num < 1 || option->num > 200)
 		return (FAILED);
 	if (option->time_to_die < 60)
 		return (FAILED);

@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 16:36:35 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/17 22:47:15 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/18 20:59:23 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void			print_status(t_option *option, int pid, const char *status)
 
 	pthread_mutex_lock(&option->print_mutex);
 	present = timediff(timestamp(), option->first_time);
-	printf("%lld ms %d %s\n", present, pid, status);
+	if (option->dead == 0)
+		printf("%lld ms %d %s\n", present, pid, status);
+	else if (strcmp(status, "died") == 0)
+		printf("%lld ms %d %s\n", present, pid, status);
 	pthread_mutex_unlock(&option->print_mutex);
 }
 
@@ -80,8 +83,8 @@ void			*act_philo(void *param)
 	philo = (t_philo *)param;
 	option = philo->option;
 	if (philo->philo_id % 2 == 0)
-		usleep(100);
-	while (philo->eat_count != option->must_eat)
+		ft_usleep(timestamp(), option->time_to_eat);
+	while ((philo->eat_count != option->must_eat) && option->dead == 0)
 	{
 		eating(&philo);
 		sleeping(&philo);

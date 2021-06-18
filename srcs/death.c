@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 18:30:09 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/17 22:44:47 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/18 20:40:52 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void			monitor(t_option *option, t_philo *philo)
 {
 	int			i;
 
-	while (option->all_ate == 0)
+	while (option->all_ate == 0 && option->dead == 0)
 	{
 		i = 0;
-		while (i < option->num)
+		while (i < option->num && option->dead == 0)
 		{
 			pthread_mutex_lock(&option->death);
 			if (check_death(option, timestamp(), &philo[i]))
@@ -58,12 +58,8 @@ void			monitor(t_option *option, t_philo *philo)
 				print_status(option, philo[i].philo_id, "died");
 			}
 			pthread_mutex_unlock(&option->death);
-			if (option->dead == 1)
-				break ;
 			i++;
 		}
-		if (option->dead == 1)
-			break ;
 		option->all_ate = check_all_ate(option, philo);
 	}
 }

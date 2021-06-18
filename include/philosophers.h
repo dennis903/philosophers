@@ -6,11 +6,11 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 16:38:43 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/17 22:50:35 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/18 21:00:57 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	PHILOSOPHERS_H //norm error here
+#ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 # define INT_MAX 2147483648
 # define INT_MIN -2147483647
@@ -72,4 +72,5 @@ long long			ft_atoi(const char *str);
 long long			timediff(long long present, long long first);
 void				ft_usleep(long long save, long long time);
 void				print_status(t_option *option, int pid, const char *status);
+int					ft_strcmp(char *s1, char *s2);
 #endif

@@ -1,4 +1,4 @@
-CC = gcc -lncurses -lpthread
+CC = gcc -lncurses -lpthread -fsanitize=address
 TARGET = philo
 
 OBJS =	./main.c	\
@@ -9,7 +9,7 @@ OBJS =	./main.c	\
 		./srcs/act_philo.c	\
 		./srcs/time.c	\
 		./srcs/ft_atoi.c	\
-		./srcs/ft_strlen.c	\
+		./srcs/ft_str.c	\
 		./srcs/death.c
 
 all : $(TARGET)

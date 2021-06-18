@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:08:36 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/17 22:45:03 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/18 19:20:40 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void			init_philos(t_philo *philo, t_option *option)
 		philo[i].latest_eat_time = 0;
 		philo[i].eat_count = 0;
 		philo[i].all_ate = 0;
+		philo[i].latest_time = timestamp();
 		philo[i].latest_eat_time = timestamp();
 		i++;
 	}
