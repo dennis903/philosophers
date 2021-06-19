@@ -1,4 +1,4 @@
-CC = gcc -lncurses -lpthread -fsanitize=address
+CC = gcc -lncurses -lpthread
 TARGET = philo
 
 OBJS =	./main.c	\
