@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 16:36:35 by hyeolee           #+#    #+#             */
-/*   Updated: 2021/06/19 14:56:11 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/06/22 12:37:00 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void			eating(t_philo **philo)
 		option->latest_time = timestamp();
 		(*philo)->status = EATING;
 		print_status(option, (*philo)->philo_id, "is eating");
-		pthread_mutex_unlock(&option->death);
 		(*philo)->eat_count++;
+		pthread_mutex_unlock(&option->death);
 		ft_usleep(option->latest_time, option->time_to_eat);
 		(*philo)->latest_eat_time = timestamp();
 		pthread_mutex_unlock(&option->fork[(*philo)->left_of]);
