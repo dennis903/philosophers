@@ -56,8 +56,8 @@ typedef struct		s_option
 	long long		first_time;
 	pthread_mutex_t print_mutex;
 	pthread_mutex_t	death;
-	pthread_mutex_t	fork[200];
-	struct s_philo	philos[200];
+	pthread_mutex_t	fork[400];
+	struct s_philo	philos[400];
 }					t_option;
 
 void				monitor(t_option *option, t_philo *philo);

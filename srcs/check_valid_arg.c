@@ -14,7 +14,7 @@
 
 int			check_valid_arg(int argc, t_option *option)
 {
-	if (option->num < 1 || option->num > 200)
+	if (option->num < 1 || option->num > 500)
 		return (FAILED);
 	if (option->time_to_die < 60)
 		return (FAILED);

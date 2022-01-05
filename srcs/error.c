@@ -64,13 +64,28 @@ int				error_in_options(int argc, char **argv)
 	if (argc < 5 || argc > 6)
 		return (FAILED);
 	if (!check_error_in_number(argv[1]))
+	{
+		printf("1\n");
 		return (FAILED);
+	}
 	if (!check_error_in_number(argv[2]))
+	{
+		printf("2\n");
 		return (FAILED);
+
+	}
 	if (!check_error_in_number(argv[3]))
+	{
+		printf("3\n");
 		return (FAILED);
+
+	}
 	if (!check_error_in_number(argv[4]))
+	{
+		printf("4\n");
 		return (FAILED);
+
+	}
 	if (argc == 6)
 		if (!check_error_in_number(argv[5]))
 			return (FAILED);
